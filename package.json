@@ -1,7 +1,7 @@
 {
-  "name": "cf-tls-sign",
+  "name": "cf-show-nodejs",
   "version": "1.0.0",
-  "description": "Codefresh TLS Sign service",
+  "description": "nodejs example for Codefresh.io presentation",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Ok\" || exit 1"
@@ -10,8 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.1",
-    "express": "^4.13.4",
-    "q": "^1.4.1",
-    "shelljs": "^0.7.0"
+    "express": "^4.13.4"
   }
 }
