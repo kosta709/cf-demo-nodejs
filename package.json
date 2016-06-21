@@ -4,12 +4,16 @@
   "description": "nodejs example for Codefresh.io presentation",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Ok\" || exit 1"
+    "test": "ls -l node_module && echo OK",
+    "start": "node index.js"
   },
   "author": "Codefresh",
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
     "body-parser": "^1.15.1",
+=======
+>>>>>>> b2
     "express": "^4.13.4"
   }
 }
