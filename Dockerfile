@@ -9,7 +9,7 @@ export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \
 . "$NVM_DIR/nvm.sh" && echo -e "\n----\nPASS - nvm environ\n----\n" && \
 nvm install v5.7.1 && echo -e "\n----\nPASS - node version install \n----\n" &&  \
 nvm use 5.7.1 && echo -e "\n----\nPASS - nvm use\n----\n" && \
-nvm alias default node && echo -e "\n----\nPASS - nvm alias\n----\n" && 
+nvm alias default node && echo -e "\n----\nPASS - nvm alias\n----\n" 
 
 COPY index.js package.json server/
 RUN npm install
