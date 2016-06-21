@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-WORKDIR /server
+
 ENV SHELL /bin/bash
 
 RUN apt-get update && apt-get install -y openssl curl build-essential libssl-dev vim zip unzip gawk && echo -e "\n----\nPASS - apt-get\n----\n" && \
@@ -13,6 +13,7 @@ nvm alias default node && echo -e "\n----\nPASS - nvm alias\n----\n"
 
 COPY index.js package.json server/
 
+WORKDIR /server
 ENV NVM_BIN /root/.nvm/versions/node/v5.7.1/bin
 ENV PATH $NVM_BIN:$PATH
 RUN npm install
