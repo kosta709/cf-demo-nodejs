@@ -22,7 +22,7 @@ router.get('/', function(req, res) {
   var htFooter = '</BODY></HTML>';
   
   res.send( htHeader + 
-                '<div>' + htContent +  ' on server</div>' +
+                '<div>' + htContent +  '</div>' +
                 '<div><script>document.write(new Date().toISOString() + " on client");</script></div>' +
             htFooter).end();
 });
