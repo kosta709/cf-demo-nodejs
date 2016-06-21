@@ -12,10 +12,10 @@ nvm use 5.7.1 && echo -e "\n----\nPASS - nvm use\n----\n" && \
 nvm alias default node && echo -e "\n----\nPASS - nvm alias\n----\n" 
 
 COPY index.js package.json server/
-RUN npm install
 
 ENV NVM_BIN /root/.nvm/versions/node/v5.7.1/bin
 ENV PATH $NVM_BIN:$PATH
+RUN npm install
 
 EXPOSE 3000
 
