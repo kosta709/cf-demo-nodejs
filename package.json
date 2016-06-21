@@ -10,10 +10,6 @@
   "author": "Codefresh",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
-    "body-parser": "^1.15.1",
-=======
->>>>>>> b2
     "express": "^4.13.4"
   }
 }
