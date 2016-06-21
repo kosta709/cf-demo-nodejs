@@ -16,12 +16,15 @@ router.get('/', function(req, res) {
   var htHeader = '<HTML>' + 
                    '<HEAD><STYLE> ' +
                        'body{ background-color: lightblue; padding-top: 150px; text-align: center; }' +
-                   '</HEAD></STYLE>' + 
+                   '</STYLE></HEAD>' + 
                    '<BODY><H1>';                                         
   var htContent = getHtContent(); 
   var htFooter = '</H1></BODY></HTML>';
   
-  res.send( htHeader + htContent + htFooter).end();
+  res.send( htHeader + 
+                "Server Date: " + htContent + 
+                "<script>document.write('\nClient Date: ' + new Date().toISOString());</script>" +
+            htFooter).end();
 });
 
 router.get('/plain', function(req, res) {
