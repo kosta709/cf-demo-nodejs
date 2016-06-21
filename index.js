@@ -15,13 +15,15 @@ router.get('/', function(req, res) {
   
   var htHeader = '<HTML>' + 
                    '<HEAD><STYLE> ' +
-                       'body{ background-color: lightblue; padding-top: 150px; text-align: center; }' +
-                   '</HEAD></STYLE>' + 
-                   '<BODY><H1>';                                         
+                       'body{ background-color: lightblue; padding-top: 150px; text-align: center; font: 30px monospace; }' +
+                   '</STYLE></HEAD>' + 
+                   '<BODY>';                                         
   var htContent = getHtContent(); 
-  var htFooter = '</H1></BODY></HTML>';
+  var htFooter = '</BODY></HTML>';
   
-  res.send( htHeader + htContent + htFooter).end();
+  res.send( htHeader + 
+                '<div>' + htContent +  '</div>' +
+            htFooter).end();
 });
 
 router.get('/plain', function(req, res) {
