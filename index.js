@@ -15,15 +15,15 @@ router.get('/', function(req, res) {
   
   var htHeader = '<HTML>' + 
                    '<HEAD><STYLE> ' +
-                       'body{ background-color: lightblue; padding-top: 150px; text-align: center; }' +
+                       'body{ background-color: lightblue; padding-top: 150px; text-align: center; font: 30px monospace; }' +
                    '</STYLE></HEAD>' + 
-                   '<BODY><H1>';                                         
+                   '<BODY>';                                         
   var htContent = getHtContent(); 
-  var htFooter = '</H1></BODY></HTML>';
+  var htFooter = '</BODY></HTML>';
   
   res.send( htHeader + 
-                "Server Date: " + htContent + 
-                "<script>document.write('\nClient Date: ' + new Date().toISOString());</script>" +
+                '<div>' + htContent +  ' on server</div>' +
+                '<div><script>document.write(new Date().toISOString() + " on client");</script></div>' +
             htFooter).end();
 });
 
