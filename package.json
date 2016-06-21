@@ -4,7 +4,8 @@
   "description": "nodejs example for Codefresh.io presentation",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Ok\" || exit 1"
+    "test": "[[ $(du -sk node_modules) -gt 0 ]] && echo OK",
+    "start": "node index.js"
   },
   "author": "Codefresh",
   "license": "ISC",
