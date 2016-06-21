@@ -1,6 +1,5 @@
 var express = require('express');
-var bodyParser = require('body-parser')
-var util = require('util');
+// var bodyParser = require('body-parser');
 
 var app = express();
 var router  = express.Router();
