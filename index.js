@@ -1,14 +1,20 @@
 var express = require('express');
 // var bodyParser = require('body-parser');
 
+var consulLib = require('./consulLib.js');
+
 var app = express();
 var router  = express.Router();
+
+
 //app.use(bodyParser.json());
 app.use('/', router);
 
 function getHtContent() {
   return new Date().toISOString().replace(/T|Z/g, " ");
 }
+
+consulLib.registerService();
 
 router.get('/', function(req, res) {
   
