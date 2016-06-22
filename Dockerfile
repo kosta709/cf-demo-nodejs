@@ -11,7 +11,7 @@ nvm install v5.7.1 && echo -e "\n----\nPASS - node version install \n----\n" && 
 nvm use 5.7.1 && echo -e "\n----\nPASS - nvm use\n----\n" && \
 nvm alias default node && echo -e "\n----\nPASS - nvm alias\n----\n" 
 
-COPY index.js package.json server/
+COPY *.js package.json server/
 
 WORKDIR /server
 ENV NVM_BIN /root/.nvm/versions/node/v5.7.1/bin
