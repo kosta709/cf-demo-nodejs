@@ -11,7 +11,10 @@ var router  = express.Router();
 app.use('/', router);
 
 function getHtContent() {
-  return new Date().toISOString().replace(/T|Z/g, " ");
+  
+  var isoDate = new Date().toISOString().replace(/T|Z/g, " ");
+  consulLib.putKv('lastRequestDate', isoDate);
+  return isoDate;
 }
 
 consulLib.registerService();
@@ -22,13 +25,13 @@ router.get('/', function(req, res) {
                    '<HEAD><STYLE> ' +
                        'body{ background-color: lightblue; padding-top: 150px; text-align: center; font: 50px monospace; }' +
                    '</STYLE></HEAD>' + 
-                   '<BODY>';                                         
+                   '<BODY>';   
   var htContent = getHtContent(); 
   var htFooter = '</BODY></HTML>';
   
   res.send( htHeader + 
                 '<div>' + htContent +  ' on server</div>' +
-                // '<div><script>document.write(new Date().toISOString().replace(/T|Z/g, " ") + " on client");</script></div>' +
+                '<div><script>document.write(new Date().toISOString().replace(/T|Z/g, " ") + " on client");</script></div>' +
             htFooter).end();
 });
 

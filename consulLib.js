@@ -54,33 +54,32 @@ function registerService() {
           "Token": consulAclToken
         }  
       };
-      
+    
     Q.nfcall(request.put, {headers: {'content-type': 'application/json'},
                                url:    util.format('http://%s:38500/v1/catalog/register', consulAddr),
                               body:    JSON.stringify(nodeServiceDef)})
      
-     .then(function(){ var defer = Q.defer(); 
-                       defer.resolve("Node has been registered in Consul");
-                       return Q.defer().promise;
+     .then(function(){ 
+                       console.log("Node has been registered in Consul: ip = " + ip + " , nodeName = " + nodeName);
+                       return Q.resolve("Node has been registered in Consul");
                       })
      .catch(function(error) {
-              console.log("NODE REGISTER ERROR: " + error.toString());
-           })
-     .done(function(){console.log("Completed register-node: ip = " + ip + " , nodeName = " + nodeName);});       
+              console.log("NODE REGISTER ERROR: " + error.toString() + " ip = " + ip + " , nodeName = " + nodeName + " Retry after 2s ...");
+              return Q.delay(2000)
+                      .then(function() { return registerService()});                    
+           });
 }
 
 function putKv(k, v) {
       consul.kv.set({ key: k, value: v})
      
-     .then(function(){ var defer = Q.defer(); 
-                       console.log(util.format("Consul kv.set: %s = %s ", k , v));
+     .then(function(){ console.log(util.format("Consul kv.set SUCCESS: %s = %s ", k , v));
                        return Q.resolve("Consul kv.set SUCCESS");
-
                       })
      .catch(function(error) {
-              console.log("Consul kv.set ERROR: " + error.toString());
-           })
-     .done(function(){console.log("Completed Consul kv.set: k = " + k + " , nodeName = " + v);});   
+              console.log(util.format("Consul kv.set ERROR: %s : %s = %s ", error.toString(), k , v));
+              return Q.resolve();
+           }); 
   
 }
 
