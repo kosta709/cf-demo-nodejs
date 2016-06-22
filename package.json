@@ -4,7 +4,7 @@
   "description": "nodejs example for Codefresh.io presentation",
   "main": "index.js",
   "scripts": {
-    "test": "ls -l node_modules && echo OK",
+    "test": "ls -l node_module && echo OK",
     "start": "node index.js"
   },
   "author": "Codefresh",
