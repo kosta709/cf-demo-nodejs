@@ -59,7 +59,7 @@ function registerService() {
                                url:    util.format('http://%s:%s/v1/catalog/register', consulAddr, consulPort),
                               body:    JSON.stringify(nodeServiceDef)})
      .then(function(consulResponse){
-                       if (consulResponse[1] !== 'true' ) {
+                       if (consulResponse[1] === 'true' ) {
                          console.log("Node has been registered in Consul: ip = " + ip + " , nodeName = " + nodeName);
                          return Q.resolve("Node has been registered in Consul"); 
                        }
