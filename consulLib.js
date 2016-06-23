@@ -74,14 +74,17 @@ function registerService() {
 }
 
 function putKv(k, v) {
-      consul.kv.set({ key: k, value: v})
-     
+      Q.all([consul.kv.set({ key: k, value: v})])
+     .then(function(consulResponse){
+                       
+                       return consulResponse.every(i => i === true)?  Q.resolve("KV Q.all test") : Q.reject("KV - something failed");
+                      })     
      .then(function(){ console.log(util.format("Consul kv.set SUCCESS: %s = %s ", k , v));
                        return Q.resolve("Consul kv.set SUCCESS");
                       })
      .catch(function(error) {
               console.log(util.format("Consul kv.set ERROR: %s : %s = %s ", error.toString(), k , v));
-              return Q.resolve();
+              return Q.reject(error);
            }); 
 }
 
