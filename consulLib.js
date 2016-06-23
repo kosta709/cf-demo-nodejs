@@ -55,29 +55,16 @@ function registerService() {
         }  
       };
     
-    Q().then(function(){
-          var defer = Q.defer();
-          request.put({headers: {'content-type': 'application/json'},
+     Q.nfcall(request.put, {headers: {'content-type': 'application/json'},
                                url:    util.format('http://%s:%s/v1/catalog/register', consulAddr, consulPort),
-                              body:    JSON.stringify(nodeServiceDef)},
-                      function (error, resonse, body) {
-                         if (error) { 
-                           defer.reject(error)
-                         }                           
-                         else {
-                           console.log("consul service.register return: " + body);
-                           if (body == 'true')
-                              defer.resolve(body);
-                           else
-                              defer.reject(body);
-                         }
-                      }
-                    );
-          return defer.promise;
-        })    
-     .then(function(){ 
-                       console.log("Node has been registered in Consul: ip = " + ip + " , nodeName = " + nodeName);
-                       return Q.resolve("Node has been registered in Consul");
+                              body:    JSON.stringify(nodeServiceDef)})
+     .then(function(consulResponse){
+                       if (consulResponse[1] !== 'true' ) {
+                         console.log("Node has been registered in Consul: ip = " + ip + " , nodeName = " + nodeName);
+                         return Q.resolve("Node has been registered in Consul"); 
+                       }
+                       else
+                         return Q.reject(consulResponse[1] || 'empty consul response');
                       })
      .catch(function(error) {
               console.log("NODE REGISTER ERROR: " + error.toString() + " ip = " + ip + " , nodeName = " + nodeName + " Retry after 2s ...");
@@ -96,7 +83,6 @@ function putKv(k, v) {
               console.log(util.format("Consul kv.set ERROR: %s : %s = %s ", error.toString(), k , v));
               return Q.resolve();
            }); 
-  
 }
 
 module.exports.putKv = putKv;
