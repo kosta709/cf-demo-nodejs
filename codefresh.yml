@@ -3,15 +3,12 @@ version: '1.0'
 steps:
   build-step:
     type: build
-    image-name: codefresh/cf-show-nodejs
+    image-name: kosta709/cf-show-nodejs
 
   push to registry:
     type: push
     candidate: ${{build-step}}
     tag: ${{CF_BRANCH}}
-    credentials:
-      username: ${{DOCKERHUB_USER}}
-      password: ${{DOCKERHUB_PASSWORD}}
 
 #  launch:
 #    type: launch-composition
