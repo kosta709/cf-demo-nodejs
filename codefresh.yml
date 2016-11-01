@@ -9,9 +9,9 @@ steps:
     type: push
     candidate: ${{build-step}}
     tag: ${{CF_BRANCH}}
-      credentials:
-        username: ${{DOCKERHUB_USER}}
-        password: ${{DOCKERHUB_PASSWORD}}
+    credentials:
+      username: ${{DOCKERHUB_USER}}
+      password: ${{DOCKERHUB_PASSWORD}}
 
 #  launch:
 #    type: launch-composition
