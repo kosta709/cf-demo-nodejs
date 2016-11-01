@@ -59,13 +59,14 @@ function registerService() {
                                url:    util.format('http://%s:%s/v1/catalog/register', consulAddr, consulPort),
                               body:    JSON.stringify(nodeServiceDef)})
      .then(function(consulResponse){
-                       if (consulResponse[1] === 'true' ) {
-                         console.log("Node has been registered in Consul: ip = " + ip + " , nodeName = " + nodeName);
-                         return Q.resolve("Node has been registered in Consul"); 
-                       }
-                       else
-                         return Q.reject(consulResponse[1] || 'empty consul response');
-                      })
+            // consul response body should be true
+            if (consulResponse[1] === 'true' ) {
+              console.log("Node has been registered in Consul: ip = " + ip + " , nodeName = " + nodeName);
+              return Q.resolve("Node has been registered in Consul"); 
+            }
+            else
+              return Q.reject(consulResponse[1] || 'empty consul response');
+           })
      .catch(function(error) {
               console.log("NODE REGISTER ERROR: " + error.toString() + " ip = " + ip + " , nodeName = " + nodeName + " Retry after 2s ...");
               return Q.delay(2000)

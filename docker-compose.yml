@@ -1,0 +1,13 @@
+version: '2'
+services:
+  consul:
+    image: 'consul:latest'
+    command: "agent -server -ui -bootstrap-expect 1 -bind=0.0.0.0 -client=0.0.0.0 -http-port 38500"
+    ports:
+      - '38500:38500'
+  cf-show-nodejs:
+    image: 'kosta709/cf-show-nodejs:b3'
+    ports:
+      - '3000:3000'
+#    links:
+#      - consul
