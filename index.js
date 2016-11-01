@@ -30,8 +30,8 @@ router.get('/', function(req, res) {
   var htFooter = '</BODY></HTML>';
   
   res.send( htHeader + 
-                '<div>' + htContent +  ' on server</div>' +
-                '<div><script>document.write(new Date().toISOString().replace(/T|Z/g, " ") + " on client");</script></div>' +
+                '<div>Time ' + htContent +  ' on server</div>' +
+                '<div><script>document.write("Time " + new Date().toISOString().replace(/T|Z/g, " ") + " on client");</script></div>' +
             htFooter).end();
 });
 
