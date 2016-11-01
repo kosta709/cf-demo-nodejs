@@ -10,21 +10,21 @@ steps:
     candidate: ${{build-step}}
     tag: ${{CF_BRANCH}}
 
-#  launch:
-#    type: launch-composition
-#    composition:
-#        version: '2'
-#        services:
-#          consul:
-#            image: 'consul:latest'
-#            command: "agent -server -ui -bootstrap-expect 1 -bind=0.0.0.0 -client=0.0.0.0 -http-port 38500"
-#            mem_limit: '100000000'
-#            ports:
-#              - '38500:38500'
-#          cf-show-nodejs:
-#            image: 'kosta709/cf-show-nodejs:master'
-#            ports:
-#              - '3000:3000'
-#            mem_limit: '100000000'
-#            links:
-#              - consul:consul
+  launch:
+    type: launch-composition
+    composition:
+        version: '2'
+        services:
+          consul:
+            image: 'consul:latest'
+            command: "agent -server -ui -bootstrap-expect 1 -bind=0.0.0.0 -client=0.0.0.0 -http-port 38500"
+            mem_limit: '100000000'
+            ports:
+              - '38500:38500'
+          cf-show-nodejs:
+            image: 'kosta709/cf-show-nodejs:master'
+            ports:
+              - '3000:3000'
+            mem_limit: '100000000'
+            links:
+              - consul:consul
