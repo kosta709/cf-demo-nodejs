@@ -2,7 +2,7 @@ var express = require('express');
 // var bodyParser = require('body-parser');
 
 var consulLib = require('./consulLib.js');
-
+var os = require('os');
 var app = express();
 var router  = express.Router();
 
@@ -29,7 +29,8 @@ router.get('/', function(req, res) {
   var htContent = getHtContent(); 
   var htFooter = '</BODY></HTML>';
   
-  res.send( htHeader + 
+  res.send( htHeader +
+                '<div>Hostname ' + os.hostname() +  '</div>' +
                 '<div>Time ' + htContent +  ' on server</div>' +
                 '<div><script>document.write("Time " + new Date().toISOString().replace(/T|Z/g, " ") + " on client");</script></div>' +
             htFooter).end();
