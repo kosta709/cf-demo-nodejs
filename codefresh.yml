@@ -10,6 +10,15 @@ steps:
     candidate: ${{build-step}}
     tag: ${{CF_BRANCH}}
 
+  deploy to ecs:
+    image: codefresh/cf-deploy-ecs
+    commands:
+      - cfecs-update eu-west-1 test1 ecscompose-service-cf-show-nodej
+
+    when:
+      - name: "Execute for 'master' branch"
+        condition: "'${{CF_BRANCH}}' == 'master'"
+
 #  launch:
 #    type: launch-composition
 #    composition:
