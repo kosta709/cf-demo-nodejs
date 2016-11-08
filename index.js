@@ -37,8 +37,10 @@ router.get('/', function(req, res) {
 });
 
 router.get('/plain', function(req, res) {
-   res.snd( getHtContent() ).end();
+   res.send( getHtContent() ).end();
 });
 
 app.listen(3000);
+
+var q = 5/0;
 
