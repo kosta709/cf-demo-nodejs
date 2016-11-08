@@ -39,5 +39,7 @@ router.get('/plain', function(req, res) {
    res.send( getHtContent() ).end();
 });
 
+throw new Error("test kosta error");
+
 app.listen(3000);
 
