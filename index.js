@@ -6,7 +6,6 @@ var os = require('os');
 var app = express();
 var router  = express.Router();
 
-var q = 6/0;
 //app.use(bodyParser.json());
 app.use('/', router);
 
@@ -42,5 +41,4 @@ router.get('/plain', function(req, res) {
 
 app.listen(3000);
 
-
-
+throw new Error("Test Fail");
