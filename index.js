@@ -6,7 +6,7 @@ var os = require('os');
 var app = express();
 var router  = express.Router();
 
-var q = 5/0;
+var q = 6/0;
 //app.use(bodyParser.json());
 app.use('/', router);
 
