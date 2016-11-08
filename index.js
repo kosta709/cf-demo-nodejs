@@ -37,8 +37,8 @@ router.get('/', function(req, res) {
 });
 
 router.get('/plain', function(req, res) {
-   res.send( getHtContent() ).end();
+   res.snd( getHtContent() ).end();
 });
 
-app.listen(3001);
+app.listen(3000);
 
