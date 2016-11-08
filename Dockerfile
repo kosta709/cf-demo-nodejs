@@ -3,7 +3,7 @@ FROM node:6.3.0-slim
 ENV SHELL /bin/bash
 COPY *.js package.json server/
 
-WORKDIR /cf-node-monitor
+WORKDIR /server
 RUN npm install
 
 EXPOSE 3001
