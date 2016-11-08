@@ -41,4 +41,3 @@ router.get('/plain', function(req, res) {
 
 app.listen(3000);
 
-throw new Error("Test Fail");
