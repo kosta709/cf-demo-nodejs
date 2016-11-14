@@ -13,7 +13,7 @@ steps:
   deploy to ecs:
     image: codefresh/cf-deploy-ecs
     commands:
-      - cfecs-update --image-name kosta709/cf-show-nodejs --image-tag ${{CF_REVISION}} eu-west-1 test1 service-cf-show-nodejs
+      - cfecs-update eu-west-1 test1 service-cf-show-nodejs
     environment:
       - AWS_ACCESS_KEY_ID=${{AWS_ACCESS_KEY_ID}}
       - AWS_SECRET_ACCESS_KEY=${{AWS_SECRET_ACCESS_KEY}}
