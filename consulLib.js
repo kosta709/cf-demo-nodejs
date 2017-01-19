@@ -61,7 +61,7 @@ function registerService() {
      .then(function(consulResponse){
             // consul response body should be true
             if (consulResponse[1] === 'true' ) {
-              console.log("Node has been registered in Consul: ip = " + ip + " , nodeName = " + nodeName);
+              console.log("Node has been registered in Consul: ip = " + ip + " , nodeName = " + nodeName + " !!!");
               return Q.resolve("Node has been registered in Consul"); 
             }
             else
