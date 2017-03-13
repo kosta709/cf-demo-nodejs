@@ -7,7 +7,7 @@ WORKDIR /server
 RUN npm install
 
 EXPOSE 3000
-
+RUN sleep 3600 || echo "Dockerfile sleep interrupted at $(date)"
 CMD ["npm", "start"]
 
 #
