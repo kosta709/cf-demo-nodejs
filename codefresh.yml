@@ -8,7 +8,7 @@ steps:
   push to registry:
     type: push
     candidate: ${{build-step}}
-    tag: ${{CF_TAG}}
+    tag: ${{CF_BRANCH}}
 
 #  deploy to ecs:
 #    image: codefresh/cf-deploy-ecs
