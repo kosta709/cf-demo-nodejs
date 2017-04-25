@@ -13,7 +13,8 @@ steps:
   push to other registry:
     type: push
     registry: dtr-internal
-    candidate: kosta709/cf-show-nodejs
+    candidate: ${{build-step}}
+    image_name: kosta/cf-show-nodejs
     tag: ${{CF_BRANCH}}
 
 #  deploy to ecs:
