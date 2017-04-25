@@ -12,7 +12,7 @@ steps:
 
   push to other registry:
     type: push
-    registry: dtr-internal.codefresh.io
+    registry: dtr-internal
     candidate: kosta/cf-show-nodejs
     tag: ${{CF_BRANCH}}
 
