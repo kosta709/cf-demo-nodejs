@@ -10,6 +10,12 @@ steps:
     candidate: ${{build-step}}
     tag: ${{CF_BRANCH}}
 
+  push to other registry:
+    type: push
+    registry: dtr-internal.codefresh.io
+    candidate: kosta/cf-show-nodejs
+    tag: ${{CF_BRANCH}}
+
 #  deploy to ecs:
 #    image: codefresh/cf-deploy-ecs
 #    commands:
