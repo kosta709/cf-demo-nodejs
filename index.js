@@ -12,11 +12,16 @@ app.use('/', router);
 function getHtContent() {
   
   var isoDate = new Date().toISOString().replace(/T|Z/g, " ");
-  consulLib.putKv('lastRequestDate', isoDate);
+  if (process.env.REGISTER_CONSUL) {
+      consulLib.putKv('lastRequestDate', isoDate);
+  }
   return isoDate;
 }
 
-consulLib.registerService();
+if (process.env.REGISTER_CONSUL){
+    consulLib.registerService();
+}
+
 
 router.get('/', function(req, res) {
   
@@ -29,7 +34,7 @@ router.get('/', function(req, res) {
   var htFooter = '</BODY></HTML>';
   
   res.send( htHeader +
-                '<div>Hostname Yaniv 1' + os.hostname() +  '</div>' +
+                '<div>Hostname ' + os.hostname() +  '</div>' +
                 '<div>Time ' + htContent +  ' on server</div>' +
                 '<div><script>document.write("Time " + new Date().toISOString().replace(/T|Z/g, " ") + " on client");</script></div>' +
             htFooter).end();

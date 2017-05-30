@@ -1,0 +1,24 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: demo-nodejs
+  labels:
+    service: demo-nodejs
+spec:
+  replicas: 2
+  template:
+    metadata:
+      annotations:
+        forceRedeployUniqId: "{{CF_REVISION}}"
+      labels:
+        service: demo-nodejs
+    spec:
+      containers:
+      - image: kosta709/cf-demo-nodejs:{{CF_BRANCH}}
+        name: demo-nodejs
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+

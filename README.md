@@ -1,2 +1,2 @@
-# cf-show-nodejs
+# cf-demo-nodejs
 nodejs repo example for Codefresh.io presentation

@@ -1,0 +1,25 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: demo-nodejs
+  name: demo-nodejs
+spec:
+  type: NodePort
+  ports:
+  - name: "http"
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    service: demo-nodejs
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: demo-nodejs-ingress
+spec:
+  backend:
+    serviceName: app
+    servicePort: 80
