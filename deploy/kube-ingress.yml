@@ -21,5 +21,5 @@ metadata:
   name: demo-nodejs-ingress
 spec:
   backend:
-    serviceName: app
+    serviceName: demo-nodejs
     servicePort: 80
