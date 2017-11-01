@@ -19,6 +19,6 @@ spec:
         name: demo-nodejs
         imagePullPolicy: Always
         ports:
-        - containerPort: 5000
+        - containerPort: 3000
           protocol: TCP
 
