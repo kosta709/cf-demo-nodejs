@@ -2,7 +2,7 @@ var Q       = require('q');
 var request = require('request');
 
 var os = require('os');
-// test commit1
+// test commit2
 var util    = require('util');
 var fromCallback = function (fn) {
   var deferred = Q.defer();
