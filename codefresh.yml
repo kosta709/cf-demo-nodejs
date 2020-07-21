@@ -4,18 +4,19 @@ steps:
   build-step:
     type: build
     image-name: kosta709/cf-demo-nodejs
+    tag: ${{CF_BRANCH}}
 
   push to registry:
     type: push
     candidate: ${{build-step}}
     tag: ${{CF_BRANCH}}
 
-  deploy_migration:
-    title: Deploy migration to the k8 cluster
-    image: codefresh/cf-deploy-kubernetes:kubeconfig
-    working_directory: ${{main_clone}}
-    commands:
-      - /cf-deploy-kubernetes deployment.yml
+#   deploy_migration:
+#     title: Deploy migration to the k8 cluster
+#     image: codefresh/cf-deploy-kubernetes:kubeconfig
+#     working_directory: ${{main_clone}}
+#     commands:
+#       - /cf-deploy-kubernetes deployment.yml
 
   #~ push to other registry:
     #~ type: push
